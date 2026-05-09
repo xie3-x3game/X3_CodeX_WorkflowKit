@@ -12,6 +12,7 @@
 - `docs/workflow/window-preflight-check.md`: Inbox/Outbox preflight rules.
 - `docs/workflow/portable-deployment.md`: portable kit deployment.
 - `docs/workflow/bootstrap-and-update.md`: install and update flow for other computers.
+- `docs/workflow/experience-evaluation.md`: scoring formula for external project experience.
 - `docs/workflow/new-project-bootstrap.md`: project scaffold guidance.
 - `docs/workflow/project-control-onboarding.md`: project-control permission and onboarding workflow.
 - `docs/workflow/legacy-conversation-onboarding.md`: legacy conversation intake.

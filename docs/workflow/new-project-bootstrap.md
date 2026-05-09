@@ -50,6 +50,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\new-project-scaffold
 
 脚本会复用 Minimal portable kit，并追加项目总控章程、窗口计划、经验同步文件，以及项目类型对应的目录与模板。默认不移动、删除、重命名已有业务文件。
 
+项目经验回传必须先按 [经验有效性评分](experience-evaluation.md) 初评，避免把偶发样本、私人信息或项目特定偏好污染到通用方法。
+
 `ControlMode` 用于定义项目总控权限：
 
 - `Light`：小项目，只维护目标、状态和经验摘要。
@@ -163,6 +165,7 @@ docs/
 6. 用户根据 `docs/project-window-plan.md` 手动创建需要的专项窗口。
 7. 每个专项窗口先读取对应 `docs/tasks/*.md`，再读取 `docs/windows/*.md`。
 8. 阶段性结论回填到新项目的 `docs/project-index.md` 和 `docs/project-experience-sync.md`。
+9. 需要回传到 `X3_CodeX` 的经验，先计算 `Experience Score` 并标记 `Raw`、`Candidate`、`Validated`、`Stable` 或 `Rejected`。
 
 ## Dispatch 使用规则
 

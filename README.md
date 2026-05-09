@@ -51,7 +51,8 @@ Use $codex-window-workflow to check dispatch for total-control.
 - `AGENTS.md`: root workflow rules.
 - `docs/windows/` and `docs/tasks/`: window guides and task boundaries.
 - `docs/dispatch/`: cross-window dispatch protocol.
-- `docs/workflow/`: boot, onboarding, bootstrap, and deployment rules.
+- `docs/workflow/`: boot, onboarding, bootstrap, deployment, and experience scoring rules.
+- `docs/workflow/experience-evaluation.md`: scoring formula for external project experience.
 - `scripts/`: deterministic PowerShell commands.
 - `skills/codex-window-workflow/`: reusable Codex skill.
 

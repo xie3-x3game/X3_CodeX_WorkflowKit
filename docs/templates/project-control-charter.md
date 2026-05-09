@@ -46,6 +46,8 @@ Project control should create an experience sync packet when:
 - A prompt or template repeatedly improves outcomes.
 - A Codex limitation or boundary becomes clear.
 
+Every experience sync packet must include `Experience Score` and `Stage` based on `docs/workflow/experience-evaluation.md`.
+
 ## Safety Rules
 
 - Do not copy full raw materials to X3_CodeX.

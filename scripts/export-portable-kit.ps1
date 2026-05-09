@@ -161,6 +161,7 @@ $minimalItems = @(
     'docs/workflow/legacy-conversation-onboarding.md',
     'docs/workflow/project-control-onboarding.md',
     'docs/workflow/bootstrap-and-update.md',
+    'docs/workflow/experience-evaluation.md',
     'docs/templates/short-window-commands.md',
     'docs/templates/dispatch-task-template.md',
     'docs/templates/legacy-window-onboarding-prompt.md',

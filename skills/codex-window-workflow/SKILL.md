@@ -18,6 +18,7 @@ Use this skill to keep a Codex multi-window project inside its local rules inste
    - Portable deployment: `docs/workflow/portable-deployment.md`.
    - Bootstrap/update: `docs/workflow/bootstrap-and-update.md`.
    - New project scaffolding: `docs/workflow/new-project-bootstrap.md`.
+   - Project experience scoring: `docs/workflow/experience-evaluation.md`.
 4. If exact commands are needed, read `references/commands.md`.
 5. If file roles or boundaries are unclear, read `references/file-map.md`.
 
@@ -31,6 +32,7 @@ Use this skill to keep a Codex multi-window project inside its local rules inste
 - For work outside the current window boundary: stop, identify the correct target window, and create or propose a dispatch task instead of continuing in the wrong window.
 - For existing or messy projects: use backup-preserving deployment. Do not clean, move, delete, or rename existing project files unless the user explicitly asks.
 - For installing or updating this workflow on another computer: use the bootstrap/update scripts first, then install or refresh the skill.
+- For project experience sync: apply the scoring formula before recommending changes to reusable rules or WorkflowKit.
 - For new projects: use the scaffold script and then validate window consistency and dispatch queue format.
 
 ## Required Validation

@@ -46,6 +46,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\new-project-scaffold
 6. 根据 `docs/project-window-plan.md` 创建必要专项窗口。
 7. 每个专项窗口使用 `启动：<窗口名>`。
 8. 项目运行一段时间后，由项目总控生成经验同步包。
+9. 同步包必须按 [经验有效性评分](experience-evaluation.md) 给出初评，不确定时标记为 `Raw`。
 
 ## 接手旧项目流程
 
@@ -98,6 +99,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\new-project-scaffold
 - 同步失败样本和证据，不只同步成功经验。
 - 回写外部项目时，优先追加或新建文件。
 - 外部项目有未提交修改时，不覆盖已有文件。
+- 经验先评分再回传；只有 `Validated` 或 `Stable` 才能推动通用模板或 WorkflowKit 更新。
 
 ## 生成文件
 

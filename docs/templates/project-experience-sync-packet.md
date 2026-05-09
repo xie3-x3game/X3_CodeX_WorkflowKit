@@ -12,6 +12,8 @@ Target Project: X3_CodeX
 Suggested Target Window:
 Priority: P2
 Status: Proposed
+Experience Score:
+Stage: Raw
 
 ## 项目场景
 
@@ -22,6 +24,33 @@ Status: Proposed
 ## 证据
 
 -
+
+## 有效性评分
+
+评分规则见 `docs/workflow/experience-evaluation.md`。
+
+| 维度 | 分数 | 说明 |
+| --- | ---: | --- |
+| EQ Evidence Quality |  |  |
+| RP Reproducibility |  |  |
+| OI Outcome Impact |  |  |
+| TR Transferability |  |  |
+| RR Risk Reduction |  |  |
+| LC Low Cost |  |  |
+| CF Compatibility Fit |  |  |
+| PR Privacy Risk |  |  |
+| DR Dirty Data Risk |  |  |
+| SS Scope Specificity |  |  |
+| PB Process Burden |  |  |
+
+```text
+Base =
+Penalty =
+Confidence =
+Experience Score =
+Stage = Raw|Candidate|Validated|Stable|Rejected
+Reason =
+```
 
 ## 已尝试的处理方式
 
