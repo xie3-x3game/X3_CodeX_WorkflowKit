@@ -1,0 +1,5 @@
+﻿.portable-kit-backups/
+.source/
+.source-backups/
+.tmp/
+*.log

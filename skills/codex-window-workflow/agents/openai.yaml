@@ -1,0 +1,4 @@
+﻿interface:
+  display_name: "CodeX Window Workflow"
+  short_description: "Run portable multi-window Codex workflows"
+  default_prompt: "Use $codex-window-workflow to start, check, dispatch, or scaffold a Codex multi-window project."
