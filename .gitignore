@@ -1,4 +1,5 @@
 ﻿.portable-kit-backups/
+.rule-update-backups/
 .source/
 .source-backups/
 .tmp/

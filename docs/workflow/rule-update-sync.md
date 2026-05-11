@@ -15,7 +15,8 @@ X3_CodeX validates a reusable rule
 -> WorkflowKit publishes rule-update-manifest.json
 -> sync-rule-updates.ps1 appends updates to each project inbox
 -> project total-control reviews docs/workflow/rule-update-inbox.md
--> project total-control distributes only the accepted rule changes
+-> apply-rule-updates.ps1 applies accepted rule changes
+-> project total-control distributes refresh prompts to already-open windows
 -> project windows follow the local decision
 ```
 
@@ -24,6 +25,8 @@ X3_CodeX validates a reusable rule
 - `docs/workflow/rule-update-manifest.json`: the WorkflowKit rule update feed.
 - `docs/workflow/rule-update-inbox.md`: per-project inbox for pending rule updates.
 - `scripts/sync-rule-updates.ps1`: deterministic sync script that appends missing updates to project inboxes.
+- `scripts/apply-rule-updates.ps1`: deterministic apply script for accepted rule IDs.
+- `docs/workflow/rule-update-refresh-prompts.md`: generated local prompts for already-open project windows.
 
 ## Update States
 
@@ -43,6 +46,19 @@ When a project receives updates:
 4. Prefer append-only local notes over rewriting existing files.
 5. Do not apply a rule if it conflicts with project-specific safety, privacy, or delivery needs.
 6. Mark each update as `Applied`, `Deferred`, `Rejected`, or `Superseded`.
+7. After applying a rule, send the generated refresh prompt to already-open Codex windows that need the new behavior.
+
+## Sync Versus Apply
+
+`sync-rule-updates.ps1` is low risk. It only appends updates to `docs/workflow/rule-update-inbox.md`.
+
+`apply-rule-updates.ps1` is medium risk. It changes project rule files for explicit rule IDs only. It should be run by project total-control after deciding the rule is suitable for that project.
+
+Current supported apply rule:
+
+```text
+RU-20260511-001
+```
 
 ## Current Stable Rules
 
@@ -75,6 +91,8 @@ This naming rule is practical, not permanent. It can be relaxed if the client la
 ## Safety Rules
 
 - The sync script only creates or appends `docs/workflow/rule-update-inbox.md` in target projects.
-- It does not edit `AGENTS.md`, window guides, task files, source files, or project materials.
-- It is safe to run repeatedly; existing `Update ID:` entries are not appended again.
+- The apply script only applies explicit supported rule IDs.
+- The apply script appends marked blocks to rule files instead of rewriting whole files.
+- The apply script writes backups under `.rule-update-backups/<timestamp>/` unless `-NoBackup` is used.
+- Both scripts are safe to run repeatedly; existing `Update ID:` or rule marker entries are not duplicated.
 - Local project paths must not be committed to the public WorkflowKit repository.

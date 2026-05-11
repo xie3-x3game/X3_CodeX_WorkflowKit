@@ -89,6 +89,14 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\X3_CodeX_Workflow\scr
 
 This appends missing updates to `docs/workflow/rule-update-inbox.md`. It does not overwrite project rules.
 
+After project total-control accepts a rule, apply an explicit rule ID:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\X3_CodeX_Workflow\scripts\apply-rule-updates.ps1" -ProjectRoot "<project-dir>" -RuleId RU-20260511-001
+```
+
+The apply command appends marked rule blocks, updates the local inbox status, writes backups, and generates `docs/workflow/rule-update-refresh-prompts.md` for already-open windows.
+
 ## In Codex
 
 After installing the skill, open a new Codex window and use:

@@ -40,6 +40,12 @@ Append WorkflowKit rule updates to project total-control inboxes without overwri
 powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\X3_CodeX_Workflow\scripts\sync-rule-updates.ps1" -ProjectRoot "<project-dir>"
 ```
 
+Apply a confirmed rule update by explicit rule id:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\X3_CodeX_Workflow\scripts\apply-rule-updates.ps1" -ProjectRoot "<project-dir>" -RuleId RU-20260511-001
+```
+
 ## Use In Codex
 
 After installing the skill, open a new Codex window and use:

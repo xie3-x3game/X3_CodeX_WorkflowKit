@@ -71,6 +71,18 @@ Use a JSON project list:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\sync-rule-updates.ps1 -ProjectsFile "<projects.json>"
 ```
 
+Apply an accepted rule update:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\apply-rule-updates.ps1 -ProjectRoot "<project-dir>" -RuleId RU-20260511-001
+```
+
+Dry-run before applying:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\apply-rule-updates.ps1 -ProjectRoot "<project-dir>" -RuleId RU-20260511-001 -DryRun
+```
+
 ## New Project Scaffold
 
 Clean new project:

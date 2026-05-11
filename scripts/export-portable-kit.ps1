@@ -179,6 +179,7 @@ $minimalItems = @(
     'scripts/new-project-scaffold.ps1',
     'scripts/get-next-dispatch-task.ps1',
     'scripts/sync-rule-updates.ps1',
+    'scripts/apply-rule-updates.ps1',
     'scripts/validate-dispatch-queue.ps1',
     'scripts/validate-window-consistency.ps1'
 )

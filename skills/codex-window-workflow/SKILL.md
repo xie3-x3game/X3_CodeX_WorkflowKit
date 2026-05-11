@@ -35,6 +35,7 @@ Use this skill to keep a Codex multi-window project inside its local rules inste
 - For installing or updating this workflow on another computer: use the bootstrap/update scripts first, then install or refresh the skill.
 - For project experience sync: apply the scoring formula before recommending changes to reusable rules or WorkflowKit.
 - For rule update sync: append missing updates to target project `docs/workflow/rule-update-inbox.md`; do not auto-apply changes to project window rules.
+- For rule update apply: only apply explicit supported rule IDs after project total-control accepts them. Tell the user that already-open windows still need the generated refresh prompt.
 - For new projects: use the scaffold script and then validate window consistency and dispatch queue format.
 
 ## Required Validation
