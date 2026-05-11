@@ -81,6 +81,18 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\new-project-scaffold
 
 项目窗口不必像 `X3_CodeX` 一样拆得很细。优先按真实工作量建立窗口。
 
+当前推荐的移动端友好命名：
+
+```text
+<项目>｜总控
+<项目>｜资料整理
+<项目>｜策略拟定
+<项目>｜专项｜<角色>｜<主题>
+<项目>｜临时｜<目的>
+```
+
+这个命名规则服务于“手机端只能看到对话名”的现实问题。后续客户端如果能更清晰展示项目分组，可以再放宽。
+
 ## 经验回收闭环
 
 ```text
@@ -91,6 +103,22 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\new-project-scaffold
 -> X3_CodeX 总控更新模板/规则
 -> 同步回对应项目
 ```
+
+## 规则更新回写闭环
+
+当 `X3_CodeX` 把某条规则沉淀为 WorkflowKit 更新后，不直接批量修改项目窗口。
+
+推荐流程：
+
+```text
+WorkflowKit rule-update-manifest.json
+-> scripts/sync-rule-updates.ps1
+-> 项目 docs/workflow/rule-update-inbox.md
+-> 项目总控判断 Applied / Deferred / Rejected / Superseded
+-> 必要时再分发给项目内窗口
+```
+
+项目总控应先判断该规则是否适合本项目，再决定是否更新 `AGENTS.md`、窗口指南或只口头提醒活跃窗口。
 
 ## 同步原则
 

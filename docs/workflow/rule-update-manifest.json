@@ -1,0 +1,55 @@
+﻿{
+  "schemaVersion": 1,
+  "kitName": "X3_CodeX_WorkflowKit",
+  "manifestVersion": "2026.05.11.1",
+  "releasedAt": "2026-05-11",
+  "updates": [
+    {
+      "id": "RU-20260511-001",
+      "title": "Silent routine preflight output",
+      "stage": "Stable",
+      "priority": "P1",
+      "target": "Project total-control",
+      "summary": "Routine boundary and dispatch preflight checks should be performed silently. Only mention them when open tasks, boundary conflicts, handoff decisions, file edits, Git or publish actions, privacy risks, or context confusion require user attention.",
+      "affectedFiles": [
+        "AGENTS.md",
+        "docs/workflow/window-preflight-check.md",
+        "skills/codex-window-workflow/SKILL.md"
+      ],
+      "suggestedAction": [
+        "Adopt this as the default reply style for project windows.",
+        "Keep explicit preflight summaries for exceptions, open queue items, or user-requested checks.",
+        "Do not remove the actual preflight check; only reduce routine narration."
+      ],
+      "distributionRule": "Project total-control decides whether to update local AGENTS.md, remind active windows, or leave the rule in the inbox for later.",
+      "verification": [
+        "Ordinary requests no longer start with a fixed preflight sentence.",
+        "Open dispatch Inbox or Outbox tasks are still surfaced before execution.",
+        "Boundary conflicts still stop execution and route to the correct window."
+      ]
+    },
+    {
+      "id": "RU-20260511-002",
+      "title": "Mobile-safe project window naming",
+      "stage": "Validated",
+      "priority": "P2",
+      "target": "Project total-control",
+      "summary": "When the UI mainly exposes conversation names, use a project prefix so mobile and cross-project switching are less error-prone.",
+      "affectedFiles": [
+        "docs/project-window-plan.md",
+        "docs/workflow/project-control-onboarding.md"
+      ],
+      "suggestedAction": [
+        "Use <Project>｜总控 for project total-control windows.",
+        "Use <Project>｜<Window> for ordinary project windows.",
+        "Use <Project>｜专项｜<role>｜<topic> or <Project>｜临时｜<purpose> when a focused or temporary conversation is needed."
+      ],
+      "distributionRule": "Apply only when the user's client or workflow benefits from project-prefixed conversation names.",
+      "verification": [
+        "The user can distinguish similarly named windows across projects on mobile.",
+        "Window names remain short enough to scan in the sidebar.",
+        "The naming rule does not replace project-local window boundaries."
+      ]
+    }
+  ]
+}

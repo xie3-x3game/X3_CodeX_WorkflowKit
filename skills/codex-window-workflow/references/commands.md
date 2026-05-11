@@ -51,6 +51,26 @@ Update an installed workflow kit:
 powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\X3_CodeX_Workflow\scripts\update-codex-workflow.ps1"
 ```
 
+## Rule Update Sync
+
+Append WorkflowKit rule updates to one project:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\sync-rule-updates.ps1 -ProjectRoot "<project-dir>"
+```
+
+Append updates to multiple projects:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\sync-rule-updates.ps1 -ProjectRoot "<project-a>","<project-b>"
+```
+
+Use a JSON project list:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\sync-rule-updates.ps1 -ProjectsFile "<projects.json>"
+```
+
 ## New Project Scaffold
 
 Clean new project:

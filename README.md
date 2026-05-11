@@ -32,6 +32,14 @@ Existing or messy project:
 powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\X3_CodeX_Workflow\scripts\new-project-scaffold.ps1" -Destination "<project-dir>" -ProjectName "<project-name>" -ProjectType Mixed -ControlMode Standard -BackupExisting
 ```
 
+## Sync Rule Updates To Projects
+
+Append WorkflowKit rule updates to project total-control inboxes without overwriting project rules:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\X3_CodeX_Workflow\scripts\sync-rule-updates.ps1" -ProjectRoot "<project-dir>"
+```
+
 ## Use In Codex
 
 After installing the skill, open a new Codex window and use:
@@ -53,6 +61,7 @@ Use $codex-window-workflow to check dispatch for total-control.
 - `docs/dispatch/`: cross-window dispatch protocol.
 - `docs/workflow/`: boot, onboarding, bootstrap, deployment, and experience scoring rules.
 - `docs/workflow/experience-evaluation.md`: scoring formula for external project experience.
+- `docs/workflow/rule-update-sync.md`: rule update inbox and distribution workflow.
 - `scripts/`: deterministic PowerShell commands.
 - `skills/codex-window-workflow/`: reusable Codex skill.
 

@@ -19,13 +19,14 @@ Use this skill to keep a Codex multi-window project inside its local rules inste
    - Bootstrap/update: `docs/workflow/bootstrap-and-update.md`.
    - New project scaffolding: `docs/workflow/new-project-bootstrap.md`.
    - Project experience scoring: `docs/workflow/experience-evaluation.md`.
+   - Rule update sync: `docs/workflow/rule-update-sync.md`.
 4. If exact commands are needed, read `references/commands.md`.
 5. If file roles or boundaries are unclear, read `references/file-map.md`.
 
 ## Decision Flow
 
 - For a startup command such as `start/load <window>`: map the window name, read its task file and guide, then summarize boundary, current tasks, and handoff rules.
-- For a new substantive request inside a loaded window: run or simulate dispatch preflight first. Present open Inbox/Outbox items before starting new work.
+- For a new substantive request inside a loaded window: run or simulate dispatch preflight first. Keep routine preflight silent when there is no issue; present open Inbox/Outbox items, boundary conflicts, or user-requested checks before starting new work.
 - For a dispatch check command: inspect `docs/dispatch/queue/*.md`; do not answer only from `docs/tasks`.
 - For a dispatch receive command: choose the highest-priority Ready/Inbox task for that target window, confirm it is inside the window boundary, then execute.
 - For a continue-current-window-task command: use `docs/tasks/<window>.md`, not the dispatch queue.
@@ -33,6 +34,7 @@ Use this skill to keep a Codex multi-window project inside its local rules inste
 - For existing or messy projects: use backup-preserving deployment. Do not clean, move, delete, or rename existing project files unless the user explicitly asks.
 - For installing or updating this workflow on another computer: use the bootstrap/update scripts first, then install or refresh the skill.
 - For project experience sync: apply the scoring formula before recommending changes to reusable rules or WorkflowKit.
+- For rule update sync: append missing updates to target project `docs/workflow/rule-update-inbox.md`; do not auto-apply changes to project window rules.
 - For new projects: use the scaffold script and then validate window consistency and dispatch queue format.
 
 ## Required Validation

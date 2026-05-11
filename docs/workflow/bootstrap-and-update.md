@@ -81,6 +81,14 @@ For only copying workflow rules into a project:
 powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\X3_CodeX_Workflow\scripts\export-portable-kit.ps1" -Destination "<project-dir>" -Profile Minimal -BackupExisting
 ```
 
+For sending only new WorkflowKit rule updates to a project total-control inbox:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$HOME\X3_CodeX_Workflow\scripts\sync-rule-updates.ps1" -ProjectRoot "<project-dir>"
+```
+
+This appends missing updates to `docs/workflow/rule-update-inbox.md`. It does not overwrite project rules.
+
 ## In Codex
 
 After installing the skill, open a new Codex window and use:

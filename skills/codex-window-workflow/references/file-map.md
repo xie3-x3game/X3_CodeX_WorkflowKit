@@ -13,6 +13,9 @@
 - `docs/workflow/portable-deployment.md`: portable kit deployment.
 - `docs/workflow/bootstrap-and-update.md`: install and update flow for other computers.
 - `docs/workflow/experience-evaluation.md`: scoring formula for external project experience.
+- `docs/workflow/rule-update-sync.md`: rule update inbox and project distribution workflow.
+- `docs/workflow/rule-update-inbox.md`: per-project inbox for received WorkflowKit rule updates.
+- `docs/workflow/rule-update-manifest.json`: WorkflowKit rule update feed.
 - `docs/workflow/new-project-bootstrap.md`: project scaffold guidance.
 - `docs/workflow/project-control-onboarding.md`: project-control permission and onboarding workflow.
 - `docs/workflow/legacy-conversation-onboarding.md`: legacy conversation intake.
@@ -33,6 +36,7 @@
 - `scripts/bootstrap-codex-workflow.ps1`: install or refresh the workflow kit from GitHub or a local source.
 - `scripts/update-codex-workflow.ps1`: wrapper for updating an installed workflow kit.
 - `scripts/new-project-scaffold.ps1`: generate a typed new project scaffold.
+- `scripts/sync-rule-updates.ps1`: append WorkflowKit rule updates to target project inboxes.
 - `scripts/install-codex-window-skill.ps1`: install this skill into the local Codex skills directory when available.
 
 ## Window Name Map

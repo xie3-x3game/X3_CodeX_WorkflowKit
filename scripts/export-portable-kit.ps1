@@ -162,6 +162,9 @@ $minimalItems = @(
     'docs/workflow/project-control-onboarding.md',
     'docs/workflow/bootstrap-and-update.md',
     'docs/workflow/experience-evaluation.md',
+    'docs/workflow/rule-update-sync.md',
+    'docs/workflow/rule-update-inbox.md',
+    'docs/workflow/rule-update-manifest.json',
     'docs/templates/short-window-commands.md',
     'docs/templates/dispatch-task-template.md',
     'docs/templates/legacy-window-onboarding-prompt.md',
@@ -175,6 +178,7 @@ $minimalItems = @(
     'scripts/install-codex-window-skill.ps1',
     'scripts/new-project-scaffold.ps1',
     'scripts/get-next-dispatch-task.ps1',
+    'scripts/sync-rule-updates.ps1',
     'scripts/validate-dispatch-queue.ps1',
     'scripts/validate-window-consistency.ps1'
 )

@@ -93,4 +93,6 @@ find the matching file under `docs/dispatch/queue`, read it, confirm the target 
 
 When the user sends a new substantive request in a loaded window, first do a lightweight dispatch preflight for that window: check Inbox tasks and Outbox tasks not closed. If there are open tasks, briefly present them and ask whether to handle the queued task, continue the new request, or mark a task Dropped/Blocked. Do not force the queued task if the user wants the new request.
 
+Routine output rule: do not narrate normal preflight or boundary checks when there is no issue. Reply naturally unless there are open Inbox/Outbox tasks, boundary conflicts, handoff decisions, file edits, Git/publish actions, privacy risks, or the user explicitly asks for a check.
+
 Important: `检查窗口：<window>` and `检查Dispatch：<window>` must inspect `docs/dispatch/queue/*.md`. They must not be answered only from `docs/tasks/<window>.md`.
