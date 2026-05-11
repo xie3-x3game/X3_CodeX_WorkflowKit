@@ -6,7 +6,7 @@ param(
 
     [string]$ProjectsFile,
 
-    [string[]]$RuleId = @('RU-20260511-001'),
+    [string[]]$RuleId = @('RU-20260511-001', 'RU-20260511-003'),
 
     [switch]$DryRun,
 
@@ -126,11 +126,53 @@ function Get-SilentPreflightRule {
     }
 }
 
+function Get-SilentVisibleProgressRule {
+    return [pscustomobject]@{
+        Id = 'RU-20260511-003'
+        Title = 'Silent routine preflight in visible progress updates'
+        AgentPath = 'AGENTS.md'
+        PreflightPath = 'docs/workflow/window-preflight-check.md'
+        PromptPath = 'docs/workflow/rule-update-refresh-prompts.md'
+        AgentBlock = @(
+            '<!-- RULE-UPDATE:RU-20260511-003:START -->',
+            '',
+            '## Rule Update: Silent Visible Progress Updates',
+            '',
+            'User-visible progress or status messages follow the same silence rule as final replies.',
+            '',
+            '- Do not use progress updates to announce routine dispatch preflight, boundary checks, or rule loading when there is no issue.',
+            '- Progress updates should mention concrete work being done, blockers, edits, validation, Git/publish actions, privacy risks, or decisions that require user attention.',
+            '- If a routine check finds no issue, neither final replies nor intermediate progress updates need to mention it.',
+            '',
+            '<!-- RULE-UPDATE:RU-20260511-003:END -->'
+        )
+        PreflightBlock = @(
+            '<!-- RULE-UPDATE:RU-20260511-003:START -->',
+            '',
+            '## Rule Update: Silent Visible Progress Updates',
+            '',
+            'User-visible progress or status messages follow the same silence rule as final replies.',
+            '',
+            '- Do not use progress updates to announce routine dispatch preflight, boundary checks, or rule loading when there is no issue.',
+            '- Progress updates should mention concrete work being done, blockers, edits, validation, Git/publish actions, privacy risks, or decisions that require user attention.',
+            '- If a routine check finds no issue, neither final replies nor intermediate progress updates need to mention it.',
+            '',
+            '<!-- RULE-UPDATE:RU-20260511-003:END -->'
+        )
+        RefreshPrompt = @(
+            'Rule refresh: reread this project''s AGENTS.md and docs/workflow/window-preflight-check.md, then follow RU-20260511-003 immediately.',
+            '',
+            'Requirement: user-visible progress or status messages must also avoid routine preflight narration. Do not use progress updates to say that you are doing ordinary dispatch preflight, boundary checks, or rule loading when there is no issue. Only mention concrete work, blockers, edits, validation, Git/publish actions, privacy risks, or decisions that need attention.'
+        )
+    }
+}
+
 function Get-RuleDefinition {
     param([Parameter(Mandatory = $true)][string]$Id)
 
     switch ($Id) {
         'RU-20260511-001' { return Get-SilentPreflightRule }
+        'RU-20260511-003' { return Get-SilentVisibleProgressRule }
         default { throw "Unsupported rule id for apply: $Id" }
     }
 }
@@ -222,10 +264,14 @@ function Set-InboxRuleStatus {
 
     $inside = $false
     $changed = $false
+    $foundRule = $false
 
     for ($i = 0; $i -lt $lines.Count; $i++) {
         if ($lines[$i] -match '^##\s+') {
             $inside = ($lines[$i] -match [regex]::Escape($RuleId))
+            if ($inside) {
+                $foundRule = $true
+            }
         }
 
         if ($inside -and $lines[$i] -match '^Status:\s*') {
@@ -240,6 +286,10 @@ function Set-InboxRuleStatus {
             $lines[$i] = '- [x] Apply'
             $changed = $true
         }
+    }
+
+    if (-not $foundRule) {
+        return 'RuleNotInInbox'
     }
 
     if (-not $changed) {

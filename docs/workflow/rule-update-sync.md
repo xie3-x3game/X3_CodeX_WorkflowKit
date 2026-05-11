@@ -74,6 +74,16 @@ Default behavior:
 
 This keeps the workflow safe without making every response feel like a fixed template.
 
+### Silent Visible Progress Updates
+
+The same rule applies to user-visible progress or status messages.
+
+Default behavior:
+
+- Do not use progress updates to announce routine dispatch preflight, boundary checks, or rule loading when there is no issue.
+- Progress updates should mention concrete work, blockers, edits, validation, Git/publish actions, or decisions that require the user's attention.
+- If a routine check finds no issue, neither final replies nor intermediate progress updates need to mention it.
+
 ### Mobile-Safe Window Names
 
 When the client UI only shows conversation names, project windows should use a stable prefix:

@@ -27,6 +27,7 @@ Use this skill to keep a Codex multi-window project inside its local rules inste
 
 - For a startup command such as `start/load <window>`: map the window name, read its task file and guide, then summarize boundary, current tasks, and handoff rules.
 - For a new substantive request inside a loaded window: run or simulate dispatch preflight first. Keep routine preflight silent when there is no issue; present open Inbox/Outbox items, boundary conflicts, or user-requested checks before starting new work.
+- For user-visible progress or status updates: do not narrate routine dispatch preflight, boundary checks, or rule loading when there is no issue. Mention concrete work, blockers, edits, validation, Git/publish actions, privacy risks, or decisions needing user attention.
 - For a dispatch check command: inspect `docs/dispatch/queue/*.md`; do not answer only from `docs/tasks`.
 - For a dispatch receive command: choose the highest-priority Ready/Inbox task for that target window, confirm it is inside the window boundary, then execute.
 - For a continue-current-window-task command: use `docs/tasks/<window>.md`, not the dispatch queue.

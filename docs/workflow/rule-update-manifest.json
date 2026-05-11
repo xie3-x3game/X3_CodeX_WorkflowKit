@@ -1,7 +1,7 @@
 ﻿{
   "schemaVersion": 1,
   "kitName": "X3_CodeX_WorkflowKit",
-  "manifestVersion": "2026.05.11.1",
+  "manifestVersion": "2026.05.11.2",
   "releasedAt": "2026-05-11",
   "updates": [
     {
@@ -49,6 +49,30 @@
         "The user can distinguish similarly named windows across projects on mobile.",
         "Window names remain short enough to scan in the sidebar.",
         "The naming rule does not replace project-local window boundaries."
+      ]
+    },
+    {
+      "id": "RU-20260511-003",
+      "title": "Silent routine preflight in visible progress updates",
+      "stage": "Validated",
+      "priority": "P1",
+      "target": "Project total-control",
+      "summary": "The silent preflight rule also applies to user-visible progress or status messages. Intermediate updates should not announce routine dispatch preflight, boundary checks, or rule loading when there is no issue.",
+      "affectedFiles": [
+        "AGENTS.md",
+        "docs/workflow/window-preflight-check.md",
+        "skills/codex-window-workflow/SKILL.md"
+      ],
+      "suggestedAction": [
+        "Apply this after RU-20260511-001.",
+        "Keep progress updates focused on concrete work, blockers, edits, validation, Git or publish actions, and user decisions.",
+        "Do not use user-visible progress messages to repeat routine preflight narration."
+      ],
+      "distributionRule": "Project total-control should apply this rule to active windows that still show redundant preflight wording in user-visible progress updates.",
+      "verification": [
+        "Final replies avoid fixed preflight wording when there is no issue.",
+        "User-visible progress updates also avoid fixed preflight wording when there is no issue.",
+        "Open tasks, boundary conflicts, edits, validation, Git actions, and privacy risks are still surfaced."
       ]
     }
   ]

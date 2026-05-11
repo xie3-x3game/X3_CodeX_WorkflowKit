@@ -95,4 +95,6 @@ When the user sends a new substantive request in a loaded window, first do a lig
 
 Routine output rule: do not narrate normal preflight or boundary checks when there is no issue. Reply naturally unless there are open Inbox/Outbox tasks, boundary conflicts, handoff decisions, file edits, Git/publish actions, privacy risks, or the user explicitly asks for a check.
 
+Visible progress update rule: user-visible progress or status messages follow the same silence rule. Do not use progress updates to announce routine dispatch preflight, boundary checks, or rule loading when there is no issue. Progress updates should mention concrete work being done, blockers, edits, validation, Git/publish actions, or decisions that require the user's attention.
+
 Important: `检查窗口：<window>` and `检查Dispatch：<window>` must inspect `docs/dispatch/queue/*.md`. They must not be answered only from `docs/tasks/<window>.md`.
