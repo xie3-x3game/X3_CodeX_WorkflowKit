@@ -97,4 +97,6 @@ Routine output rule: do not narrate normal preflight or boundary checks when the
 
 Visible progress update rule: user-visible progress or status messages follow the same silence rule. Do not use progress updates to announce routine dispatch preflight, boundary checks, or rule loading when there is no issue. Progress updates should mention concrete work being done, blockers, edits, validation, Git/publish actions, or decisions that require the user's attention.
 
+Simple-first rule: start plans, projects, roles, records, and automation with the smallest useful structure. Do not design a complete organization, taxonomy, workflow, or tool before real use requires it. Prefer a draft note, template, checklist, or manual process first; expand into rules, scripts, automations, or new windows only after review shows repeated need, higher risk, or clear value.
+
 Important: `检查窗口：<window>` and `检查Dispatch：<window>` must inspect `docs/dispatch/queue/*.md`. They must not be answered only from `docs/tasks/<window>.md`.

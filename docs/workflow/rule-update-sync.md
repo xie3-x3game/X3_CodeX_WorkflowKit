@@ -84,6 +84,17 @@ Default behavior:
 - Progress updates should mention concrete work, blockers, edits, validation, Git/publish actions, or decisions that require the user's attention.
 - If a routine check finds no issue, neither final replies nor intermediate progress updates need to mention it.
 
+### Simple First, Review Before Scaling
+
+Plans, projects, roles, records, and automation should start with the smallest useful structure.
+
+Default behavior:
+
+- Do not pre-build a complete organization, taxonomy, workflow, or tool before real use requires it.
+- Prefer draft notes, templates, checklists, and manual steps before scripts, automations, rules, or new windows.
+- Expand only after review shows repeated need, higher risk, or clear value.
+- Use periodic or event-triggered review to decide when to merge, split, upgrade, archive, transfer, or automate.
+
 ### Mobile-Safe Window Names
 
 When the client UI only shows conversation names, project windows should use a stable prefix:

@@ -1,7 +1,7 @@
 ﻿{
   "schemaVersion": 1,
   "kitName": "X3_CodeX_WorkflowKit",
-  "manifestVersion": "2026.05.11.2",
+  "manifestVersion": "2026.05.11.3",
   "releasedAt": "2026-05-11",
   "updates": [
     {
@@ -73,6 +73,32 @@
         "Final replies avoid fixed preflight wording when there is no issue.",
         "User-visible progress updates also avoid fixed preflight wording when there is no issue.",
         "Open tasks, boundary conflicts, edits, validation, Git actions, and privacy risks are still surfaced."
+      ]
+    },
+    {
+      "id": "RU-20260511-004",
+      "title": "Simple first, review before scaling",
+      "stage": "Stable",
+      "priority": "P1",
+      "target": "All levels",
+      "summary": "Plans, projects, roles, records, and automation should start with the smallest useful structure. Expand only after real use, review, repeated need, higher risk, or clear value justifies more structure.",
+      "affectedFiles": [
+        "AGENTS.md",
+        "docs/workflow/project-control-onboarding.md",
+        "skills/codex-window-workflow/SKILL.md"
+      ],
+      "suggestedAction": [
+        "Apply this as a default operating principle for CodeX total-control, project total-control, specialist windows, and automation design.",
+        "Prefer draft notes, templates, checklists, and manual workflows before scripts or automations.",
+        "Avoid pre-building complete project, person, role, or communication structures before real use requires them.",
+        "Use periodic or event-triggered review to decide when to expand, merge, split, archive, or automate."
+      ],
+      "distributionRule": "Project total-control should pass this principle to project members and use it when deciding whether to create projects, windows, roles, directories, rules, or tools.",
+      "verification": [
+        "New structures start with a minimal useful version.",
+        "Expansion decisions cite real usage evidence or risk.",
+        "Rules and tools are not added only because they are theoretically elegant.",
+        "Periodic review can still grow the structure when real work requires it."
       ]
     }
   ]

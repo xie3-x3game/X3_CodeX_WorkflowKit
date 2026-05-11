@@ -6,7 +6,7 @@ param(
 
     [string]$ProjectsFile,
 
-    [string[]]$RuleId = @('RU-20260511-001', 'RU-20260511-003'),
+    [string[]]$RuleId = @('RU-20260511-001', 'RU-20260511-003', 'RU-20260511-004'),
 
     [switch]$DryRun,
 
@@ -167,12 +167,57 @@ function Get-SilentVisibleProgressRule {
     }
 }
 
+function Get-SimpleFirstRule {
+    return [pscustomobject]@{
+        Id = 'RU-20260511-004'
+        Title = 'Simple first, review before scaling'
+        AgentPath = 'AGENTS.md'
+        SecondaryPath = 'docs/workflow/project-control-onboarding.md'
+        SecondaryLabel = 'project-control-onboarding.md'
+        PromptPath = 'docs/workflow/rule-update-refresh-prompts.md'
+        AgentBlock = @(
+            '<!-- RULE-UPDATE:RU-20260511-004:START -->',
+            '',
+            '## Rule Update: Simple First, Review Before Scaling',
+            '',
+            'Start plans, projects, roles, records, and automation with the smallest useful structure.',
+            '',
+            '- Do not design a complete organization, taxonomy, workflow, or tool before real use requires it.',
+            '- Prefer a draft note, template, checklist, or manual process first.',
+            '- Expand into rules, scripts, automations, directories, or new windows only after review shows repeated need, higher risk, or clear value.',
+            '- Use periodic or event-triggered review to decide when to merge, split, upgrade, archive, transfer, or automate.',
+            '',
+            '<!-- RULE-UPDATE:RU-20260511-004:END -->'
+        )
+        SecondaryBlock = @(
+            '<!-- RULE-UPDATE:RU-20260511-004:START -->',
+            '',
+            '## Rule Update: Simple First, Review Before Scaling',
+            '',
+            'Start project structures, roles, communication records, and automation with the smallest useful version.',
+            '',
+            '- New projects should start with required total-control, index, and only the few windows that have real recurring work.',
+            '- New specialist topics should remain under a parent project until real usage justifies promotion to an independent project.',
+            '- New person, AI role, permission, and communication models should start with minimal fields and expand after review.',
+            '- Use periodic or event-triggered review to merge, split, promote, archive, transfer, or automate only when real work requires it.',
+            '',
+            '<!-- RULE-UPDATE:RU-20260511-004:END -->'
+        )
+        RefreshPrompt = @(
+            'Rule refresh: reread this project''s AGENTS.md and docs/workflow/project-control-onboarding.md, then follow RU-20260511-004 immediately.',
+            '',
+            'Requirement: start new plans, project structures, roles, records, and automation with the smallest useful version. Prefer draft notes, templates, checklists, or manual steps first. Expand into more windows, directories, rules, scripts, or automations only after real use and review show repeated need, higher risk, or clear value.'
+        )
+    }
+}
+
 function Get-RuleDefinition {
     param([Parameter(Mandatory = $true)][string]$Id)
 
     switch ($Id) {
         'RU-20260511-001' { return Get-SilentPreflightRule }
         'RU-20260511-003' { return Get-SilentVisibleProgressRule }
+        'RU-20260511-004' { return Get-SimpleFirstRule }
         default { throw "Unsupported rule id for apply: $Id" }
     }
 }
@@ -420,17 +465,20 @@ foreach ($projectPath in $projectPaths) {
 
             $rule = Get-RuleDefinition -Id $id
             $startMarker = "<!-- RULE-UPDATE:${id}:START -->"
+            $secondaryPath = if ($rule.PSObject.Properties.Name -contains 'SecondaryPath') { $rule.SecondaryPath } else { $rule.PreflightPath }
+            $secondaryBlock = if ($rule.PSObject.Properties.Name -contains 'SecondaryBlock') { $rule.SecondaryBlock } else { $rule.PreflightBlock }
+            $secondaryLabel = if ($rule.PSObject.Properties.Name -contains 'SecondaryLabel') { $rule.SecondaryLabel } else { 'window-preflight-check.md' }
             $agentResult = Add-BlockIfMissing -ProjectPath $projectPath -RelativePath $rule.AgentPath -Block $rule.AgentBlock -StartMarker $startMarker -BackupRoot $backupRoot
-            $preflightResult = Add-BlockIfMissing -ProjectPath $projectPath -RelativePath $rule.PreflightPath -Block $rule.PreflightBlock -StartMarker $startMarker -BackupRoot $backupRoot
+            $secondaryResult = Add-BlockIfMissing -ProjectPath $projectPath -RelativePath $secondaryPath -Block $secondaryBlock -StartMarker $startMarker -BackupRoot $backupRoot
             $inboxResult = Set-InboxRuleStatus -ProjectPath $projectPath -RuleId $id -BackupRoot $backupRoot
 
-            if ($agentResult -ne 'AlreadyPresent' -or $preflightResult -ne 'AlreadyPresent' -or $inboxResult -notin @('InboxAlreadyApplied', 'MissingInbox')) {
+            if ($agentResult -ne 'AlreadyPresent' -or $secondaryResult -ne 'AlreadyPresent' -or $inboxResult -notin @('InboxAlreadyApplied', 'MissingInbox')) {
                 $appliedRules.Add($rule)
             }
 
             Write-Output "  Rule: $id"
             Write-Output "    AGENTS.md: $agentResult"
-            Write-Output "    window-preflight-check.md: $preflightResult"
+            Write-Output "    ${secondaryLabel}: $secondaryResult"
             Write-Output "    inbox: $inboxResult"
         }
 
